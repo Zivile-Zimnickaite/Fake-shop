@@ -1,5 +1,3 @@
-console.log('labas')
-
 //countCart f-ja turi perseiti per krepselio turini ir susaiciuoti visus quantity parametrus ir sudeti juos i kintamaji
 // let quantityCounter = 0;
 // let priceCounter = 0;
@@ -15,6 +13,61 @@ console.log('labas')
 //     localStorage.setItem('cart', JSON.stringify(shoppingCart));
 // });
 
-let shoppingCartLocalStorage = localStorage.getItem('cart')
-console.log(shoppingCartLocalStorage)
+let shoppingCartLocalStorage: string | null = localStorage.getItem('cart')
+// console.log(shoppingCartLocalStorage)
 
+interface ProductInterface {
+    id: string,
+    title: string,
+    price: number,
+    description: string,
+    category: string,
+    image: string,
+    rating: {
+        count: number,
+        rate: number
+    }
+    quantity?: number
+}
+
+
+interface ShoppingCart {
+    id: string,
+    title: string,
+    image: string,
+    price: number,
+    quantity?: number,
+    totalQuantity?: number,
+    addItem: any,
+    removeItem: any
+}
+
+
+let localStorageItems: ProductInterface[] = []
+
+let oneItem: ShoppingCart[] = []
+
+let price: number = 0
+let image: string = ''
+let title: string = ''
+let id: string = ''
+let quantity: any = 0
+
+
+if (shoppingCartLocalStorage) {
+    localStorageItems = JSON.parse(shoppingCartLocalStorage)
+
+    console.log(localStorageItems)
+
+    localStorageItems.forEach((item) => {
+
+        image = item.image
+        title = item.title
+        price = item.price
+        id = item.id
+        quantity = item.quantity
+
+    })
+}
+
+console.log(price)

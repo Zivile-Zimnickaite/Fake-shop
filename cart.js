@@ -1,5 +1,4 @@
 "use strict";
-console.log('labas');
 //countCart f-ja turi perseiti per krepselio turini ir susaiciuoti visus quantity parametrus ir sudeti juos i kintamaji
 // let quantityCounter = 0;
 // let priceCounter = 0;
@@ -15,4 +14,22 @@ console.log('labas');
 //     localStorage.setItem('cart', JSON.stringify(shoppingCart));
 // });
 let shoppingCartLocalStorage = localStorage.getItem('cart');
-console.log(shoppingCartLocalStorage);
+let localStorageItems = [];
+let oneItem = [];
+let price = 0;
+let image = '';
+let title = '';
+let id = '';
+let quantity = 0;
+if (shoppingCartLocalStorage) {
+    localStorageItems = JSON.parse(shoppingCartLocalStorage);
+    console.log(localStorageItems);
+    localStorageItems.forEach((item) => {
+        image = item.image;
+        title = item.title;
+        price = item.price;
+        id = item.id;
+        quantity = item.quantity;
+    });
+}
+console.log(price);
